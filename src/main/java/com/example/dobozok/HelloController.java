@@ -51,6 +51,8 @@ public class HelloController {
             }
         }
 
+        onClickRand();
+
         timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
@@ -68,5 +70,17 @@ public class HelloController {
     }
 
     public void onClickRand() {
+        for (int x = 0; x < 15; x++) {
+            int randDoboz = (int)(Math.random()*10);
+            for (int y = 9; y >= 0; y--) {
+                if (y >= randDoboz) {
+                    lbT[y][x].setGraphic(new ImageView(box));
+                    intT[y][x] = CLOSE;
+                } else {
+                    lbT[y][x].setGraphic(new ImageView(semmi));
+                    intT[y][x] = NULL;
+                }
+            }
+        }
     }
 }
