@@ -1,5 +1,6 @@
 package com.example.dobozok;
 
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -12,6 +13,7 @@ public class HelloController {
     public Pane pane;
     public Label feldolgLb;
     public Label letettLb;
+    public ImageView arrow;
 
     public Image boxopen = new Image(getClass().getResourceAsStream("boxopen.png"));
     public Image box = new Image(getClass().getResourceAsStream("box.png"));
@@ -25,6 +27,9 @@ public class HelloController {
     public final int OPEN = 1;
     public final int CLOSE = 2;
 
+    public AnimationTimer timer = null;
+    public long ido = 0;
+    public int angle = 0;
 
     public void initialize() {
         for (int y = 0; y < 10; y++) {
@@ -45,6 +50,18 @@ public class HelloController {
                 pane.getChildren().add(lbT[y][x]);
             }
         }
+
+        timer = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                if (l > ido) {
+                    ido = l + 100_000_000;
+                    angle += 36;
+                    arrow.setRotate(angle);
+                }
+            }
+        };
+        timer.start();
     }
 
     private void onPalyaKatt(int y, int x) {

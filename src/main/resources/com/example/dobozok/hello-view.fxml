@@ -36,7 +36,7 @@
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin></Label>
-            <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="10.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="arrow" fitHeight="64.0" fitWidth="64.0" layoutX="10.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@arrow.png" />
                </image></ImageView>
